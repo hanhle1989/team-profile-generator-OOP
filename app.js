@@ -3,6 +3,8 @@ const fs = require("fs");
 const path = require("path");
 
 const templatesDir = path.resolve(__dirname, "./templates");
+const OUTPUT_DIR = path.resolve(__dirname, "profiles");
+const outputPath = path.join(OUTPUT_DIR, "team-profiles.html");
 
 const Manager = require("./lib/manager");
 const Engineer = require("./lib/engineer");
@@ -176,3 +178,37 @@ function addNewRole() {
 
 addNewRole();
 
+function generate() {
+    fs.writeFileSync(outputPath, render(team), "utf-8");
+    process.exit(0);
+}
+
+const render = employees => {
+    const html = [];
+  
+    html.push(...employees
+      .filter(employee => employee.getRole() === "Manager")
+      .map(manager => renderManager(manager))
+    );
+    html.push(...employees
+      .filter(employee => employee.getRole() === "Engineer")
+      .map(engineer => renderEngineer(engineer))
+    );
+    html.push(...employees
+      .filter(employee => employee.getRole() === "Intern")
+      .map(intern => renderIntern(intern))
+    );
+  
+    return renderMain(html.join(""));
+  
+  };
+    
+  const renderMain = html => {
+    const template = fs.readFileSync(path.resolve(templatesDir, "Main.html"), "utf8");
+    return replacePlaceholders(template, "team", html);
+  };
+  
+  const replacePlaceholders = (template, placeholder, value) => {
+    const pattern = new RegExp("{{ " + placeholder + " }}", "gm");
+    return template.replace(pattern, value);
+  };
