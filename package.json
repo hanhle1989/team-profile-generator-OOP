@@ -1,0 +1,25 @@
+{
+  "name": "teamprofiles",
+  "version": "1.0.0",
+  "description": "OOP and testing for team profile generator",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest --verbose test/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hanhle1989/OOP-Team-Profile-Generator.git"
+  },
+  "homepage": "https://github.com/hanhle1989/readme.md",
+  "dependencies": {
+    "inquirer": "^6.3.1",
+    "npm": "^7.6.1"
+  },
+  "devDependencies": {
+    "jest": "^24.8.0"
+  }
+}
