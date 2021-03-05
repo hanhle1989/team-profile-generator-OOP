@@ -171,3 +171,16 @@ const replacePlaceholders = (template, placeholder, value) => {
     const pattern = new RegExp("{{ " + placeholder + " }}", "gm");
     return template.replace(pattern, value);
 };
+
+const renderManager = manager => {
+    let template = fs.readFileSync(path.resolve(templatesDir, "Manager.html"), "utf8");
+    template = replacePlaceholders(template, "name", manager.getName());
+    template = replacePlaceholders(template, "role", manager.getRole());
+    template = replacePlaceholders(template, "id", manager.getId());
+    template = replacePlaceholders(template, "email", manager.getEmail());
+    template = replacePlaceholders(template, "office", manager.getOffice());
+    return template;
+  };
+
+  
+  module.exports = render;
