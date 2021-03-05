@@ -191,5 +191,15 @@ const renderManager = manager => {
     template = replacePlaceholders(template, "github", engineer.getGithub());
     return template;
   };
+
+  const renderIntern = intern => {
+    let template = fs.readFileSync(path.resolve(templatesDir, "Intern.html"), "utf8");
+    template = replacePlaceholders(template, "name", intern.getName());
+    template = replacePlaceholders(template, "id", intern.getId());
+    template = replacePlaceholders(template, "role", intern.getRole());
+    template = replacePlaceholders(template, "email", intern.getEmail());
+    template = replacePlaceholders(template, "school", intern.getSchool());
+    return template;
+  };
   
   module.exports = render;
