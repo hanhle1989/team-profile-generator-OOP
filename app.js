@@ -21,91 +21,50 @@ const selectJobRole = [
     }
 ];
 
-const questions = {
+const questions = [
+    {
+        type: "input",
+        name: "name",
+        message: "What is the manager's name?",
+    },
+    {
+        type: "input",
+        name: "id",
+        message: "What is the manager's ID number?",
+    },
+    {
+        type: "input",
+        name: "email",
+        message: "What is the manager's email address?",
+    },
+    {
+        type: "list",
+        name: "newProfile",
+        message: "Do you want to add another profile?",
+        choices: ["yes", "no"]
+    },
+],
+
+const eaRole = {
     Manager: [
-        {
-            type: "input",
-            name: "name",
-            message: "What is the manager's name?",
-        },
-        {
-            type: "input",
-            name: "id",
-            message: "What is the manager's ID number?",
-        },
-        {
-            type: "input",
-            name: "email",
-            message: "What is the manager's email address?",
-        },
         {
             type: "input",
             name: "office",
             message: "What is the manager's office number?",
         },
-        {
-            type: "list",
-            name: "newProfile",
-            message: "Do you want to add another profile?",
-            choices: ["yes", "no"]
-        },
     ],
-
     Engineer: [
-        {
-            type: "input",
-            name: "name",
-            message: "What is the engineer's name?",
-        },
-        {
-            type: "input",
-            name: "id",
-            message: "What is the engineer's ID number?",
-        },
-        {
-            type: "input",
-            name: "email",
-            message: "What is the engineer's email address?",
-        },
         {
             type: "input",
             name: "github",
             message: "What is the engineer's GitHub username?",
         },
-        {
-            type: "list",
-            name: "newProfile",
-            message: "Do you want to add another profile?",
-            choices: ["yes", "no"]
-        },
     ],
-
     Intern: [
-        {
-            type: "input",
-            name: "name",
-            message: "What is the intern's name?",
-        },
-        {
-            type: "input",
-            name: "id",
-            message: "What is the intern's ID number?",
-        },
-        {
-            type: "input",
-            name: "email",
-            message: "What is the intern's email address?",
-        },
         {
             type: "input",
             name: "school",
             message: "What is the name of the intern's school?",
-        },
-        {
-            type: "list",
-            name: "newProfile",
-            message: "Do you want to add another profile?",
-            choices: ["yes", "no"]
         },
     ],
 }
@@ -116,15 +75,15 @@ function addNewRole() {
             if (answer.role === "Manager") {
                 inquirer.prompt(questions.Manager)
                     .then(answer => {
-                        const manager = new Manager (
-                                answer.name,
-                                answer.id,
-                                answer.email,
-                                answer.office
-                            );
+                        const manager = new Manager(
+                            answer.name,
+                            answer.id,
+                            answer.email,
+                            answer.office
+                        );
 
                         team.push(manager);
-                        
+
                         if (answer.newProfile === "yes") {
                             addNewRole();
                         } else {
@@ -136,12 +95,12 @@ function addNewRole() {
             if (answer.role === "Engineer") {
                 inquirer.prompt(questions.Engineer)
                     .then(answer => {
-                        const engineer = new Engineer (
-                                answer.name,
-                                answer.id,
-                                answer.email,
-                                answer.github
-                            );
+                        const engineer = new Engineer(
+                            answer.name,
+                            answer.id,
+                            answer.email,
+                            answer.github
+                        );
 
                         team.push(engineer);
 
@@ -157,12 +116,12 @@ function addNewRole() {
             if (answer.role === "Intern") {
                 inquirer.prompt(questions.Intern)
                     .then(answer => {
-                        const intern = new Intern (
-                                answer.name,
-                                answer.id,
-                                answer.email,
-                                answer.school
-                            );
+                        const intern = new Intern(
+                            answer.name,
+                            answer.id,
+                            answer.email,
+                            answer.school
+                        );
 
                         team.push(intern);
 
@@ -174,7 +133,7 @@ function addNewRole() {
                     });
             };
         });
-    };
+};
 
 addNewRole();
 
@@ -185,30 +144,30 @@ function generate() {
 
 const render = employees => {
     const html = [];
-  
+
     html.push(...employees
-      .filter(employee => employee.getRole() === "Manager")
-      .map(manager => renderManager(manager))
+        .filter(employee => employee.getRole() === "Manager")
+        .map(manager => renderManager(manager))
     );
     html.push(...employees
-      .filter(employee => employee.getRole() === "Engineer")
-      .map(engineer => renderEngineer(engineer))
+        .filter(employee => employee.getRole() === "Engineer")
+        .map(engineer => renderEngineer(engineer))
     );
     html.push(...employees
-      .filter(employee => employee.getRole() === "Intern")
-      .map(intern => renderIntern(intern))
+        .filter(employee => employee.getRole() === "Intern")
+        .map(intern => renderIntern(intern))
     );
-  
+
     return renderMain(html.join(""));
-  
-  };
-    
-  const renderMain = html => {
+
+};
+
+const renderMain = html => {
     const template = fs.readFileSync(path.resolve(templatesDir, "Main.html"), "utf8");
     return replacePlaceholders(template, "team", html);
-  };
-  
-  const replacePlaceholders = (template, placeholder, value) => {
+};
+
+const replacePlaceholders = (template, placeholder, value) => {
     const pattern = new RegExp("{{ " + placeholder + " }}", "gm");
     return template.replace(pattern, value);
-  };
+};
