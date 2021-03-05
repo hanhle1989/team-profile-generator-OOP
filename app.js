@@ -73,7 +73,7 @@ function addNewRole() {
     inquirer.prompt(selectJobRole)
         .then(answer => {
             if (answer.role === "Manager") {
-                inquirer.prompt(questions.Manager)
+                inquirer.prompt(questions + eaRole.Manager)
                     .then(answer => {
                         const manager = new Manager(
                             answer.name,
@@ -93,7 +93,7 @@ function addNewRole() {
             };
 
             if (answer.role === "Engineer") {
-                inquirer.prompt(questions.Engineer)
+                inquirer.prompt(questions + eaRole.Engineer)
                     .then(answer => {
                         const engineer = new Engineer(
                             answer.name,
@@ -114,7 +114,7 @@ function addNewRole() {
 
 
             if (answer.role === "Intern") {
-                inquirer.prompt(questions.Intern)
+                inquirer.prompt(questions.questions + eaRole.Intern)
                     .then(answer => {
                         const intern = new Intern(
                             answer.name,
