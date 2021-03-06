@@ -137,9 +137,8 @@ function addNewRole() {
                                 answer.email,
                                 answer.office
                             );
-
                         team.push(manager);
-                        
+
                         if (answer.newProfile === "yes") {
                             addNewRole();
                         } else {
@@ -158,7 +157,6 @@ function addNewRole() {
                                 answer.email,
                                 answer.github
                             );
-
                         team.push(engineer);
 
                         if (answer.newProfile === "yes") {
@@ -180,7 +178,6 @@ function addNewRole() {
                                 answer.email,
                                 answer.school
                             );
-
                         team.push(intern);
 
                         if (answer.newProfile === "yes") {
@@ -191,7 +188,7 @@ function addNewRole() {
                     });
             };
         });
-    };
+};
 
 addNewRole();
 
@@ -203,25 +200,27 @@ function generate() {
 
 const render = employees => {
     const html = [];
-  
+
     html.push(...employees
-      .filter(employee => employee.getRole() === "Manager")
-      .map(manager => renderManager(manager))
+        .filter(employee => employee.getRole() === "Manager")
+        .map(manager => renderManager(manager))
     );
     html.push(...employees
-      .filter(employee => employee.getRole() === "Engineer")
-      .map(engineer => renderEngineer(engineer))
+        .filter(employee => employee.getRole() === "Engineer")
+        .map(engineer => renderEngineer(engineer))
     );
     html.push(...employees
-      .filter(employee => employee.getRole() === "Intern")
-      .map(intern => renderIntern(intern))
+        .filter(employee => employee.getRole() === "Intern")
+        .map(intern => renderIntern(intern))
     );
-  
+    
+    console.log("Successfully created new profiles")
     return renderMain(html.join(""));
-  
-  };
-  
-  const renderManager = manager => {
+    
+
+};
+
+const renderManager = manager => {
     let template = fs.readFileSync(path.resolve(templatesDir, "Manager.html"), "utf8");
     template = replacePlaceholders(template, "name", manager.getName());
     template = replacePlaceholders(template, "role", manager.getRole());
@@ -229,9 +228,9 @@ const render = employees => {
     template = replacePlaceholders(template, "email", manager.getEmail());
     template = replacePlaceholders(template, "office", manager.getOffice());
     return template;
-  };
-  
-  const renderEngineer = engineer => {
+};
+
+const renderEngineer = engineer => {
     let template = fs.readFileSync(path.resolve(templatesDir, "Engineer.html"), "utf8");
     template = replacePlaceholders(template, "name", engineer.getName());
     template = replacePlaceholders(template, "id", engineer.getId());
@@ -239,9 +238,9 @@ const render = employees => {
     template = replacePlaceholders(template, "email", engineer.getEmail());
     template = replacePlaceholders(template, "github", engineer.getGithub());
     return template;
-  };
-  
-  const renderIntern = intern => {
+};
+
+const renderIntern = intern => {
     let template = fs.readFileSync(path.resolve(templatesDir, "Intern.html"), "utf8");
     template = replacePlaceholders(template, "name", intern.getName());
     template = replacePlaceholders(template, "id", intern.getId());
@@ -249,16 +248,16 @@ const render = employees => {
     template = replacePlaceholders(template, "email", intern.getEmail());
     template = replacePlaceholders(template, "school", intern.getSchool());
     return template;
-  };
-  
-  const renderMain = html => {
+};
+
+const renderMain = html => {
     const template = fs.readFileSync(path.resolve(templatesDir, "Main.html"), "utf8");
     return replacePlaceholders(template, "team", html);
-  };
-  
-  const replacePlaceholders = (template, placeholder, value) => {
+};
+
+const replacePlaceholders = (template, placeholder, value) => {
     const pattern = new RegExp("{{ " + placeholder + " }}", "gm");
     return template.replace(pattern, value);
-  };
-  
-  module.exports = render;
+};
+
+module.exports = render;
