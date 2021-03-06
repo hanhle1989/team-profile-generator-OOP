@@ -6,10 +6,10 @@ Build a Node.js command-line application that takes in information about employe
 <li>Engineer: Name, Email, GitHub Username</br>
 <li>Intern: Name, Email, School
 <br></br>
-Also write a unit test for every part of your code and ensure that it passes each test.
+Also write a unit test for every part of your code and ensure that it passes each test.</br>
 
-<br></br>
-[GitHub Depository](https://github.com/hanhle1989/team-profile-generator-OOP) / [Walkthrough Video](https://github.com/hanhle1989/team-profile-generator-OOP)
+[GitHub Depository](https://github.com/hanhle1989/team-profile-generator-OOP) // [Walkthrough Video (Google Drive)](https://drive.google.com/file/d/1PJ8dpaE5H4Qpe0phErIvSrDATSaCHHiL/view) // 
+[Walkthrough Video (GitHub)](https://drive.google.com/file/d/1PJ8dpaE5H4Qpe0phErIvSrDATSaCHHiL/view)
 
 </br>
 
@@ -39,3 +39,4 @@ THEN I exit the application, and the HTML is generated
 ![Team Profile Generator Mockup](mockup-and-walkthrough/mockup.jpg)
 
 ## Walkthrough
+![Team Profile Generator Mockup](mockup-and-walkthrough/team-profile-generator.gif)
