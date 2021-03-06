@@ -1,21 +1,21 @@
-const Manager = require("../lib/Manager");
-const Employee = require("../lib/Employee");
+const Manager = require("../lib/manager");
+const Employee = require("../lib/employee");
 
-test("Can set office number via constructor argument", () => {
-  const testOffice = 999;
+test("Should be able to set office number via constructor argument", () => {
+  const testOffice = 9999999999;
   const employee = new Manager("Foo", 1, "test@test.com", testOffice);
 
   expect(employee.office).toBe(testOffice);
 });
 
-test('getRole() should return "Manager"', () => {
+test("'Manager' should be returned via getRole()", () => {
   const testRole = "Manager";
-  const employee = new Manager("Foo", 1, "test@test.com", 999);
+  const employee = new Manager("Foo", 1, "test@test.com", 9999999999);
 
   expect(employee.getRole()).toBe(testRole);
 });
 
-test("Can get office number via getOffice()", () => {
+test("Should be able to get office number via getOffice()", () => {
   const testOffice = 999;
   const employee = new Manager("Foo", 1, "test@test.com", testOffice);
 
