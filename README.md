@@ -9,7 +9,7 @@ Build a Node.js command-line application that takes in information about employe
 Also write a unit test for every part of your code and ensure that it passes each test.</br>
 
 [GitHub Depository](https://github.com/hanhle1989/team-profile-generator-OOP) // [Walkthrough Video (Google Drive)](https://drive.google.com/file/d/1PJ8dpaE5H4Qpe0phErIvSrDATSaCHHiL/view) // 
-[Walkthrough Video (GitHub)](https://drive.google.com/file/d/1PJ8dpaE5H4Qpe0phErIvSrDATSaCHHiL/view)
+[Walkthrough Video (GitHub)](https://github.com/hanhle1989/team-profile-generator-OOP/blob/main/mockup-and-walkthrough/team-profile-generator.mp4)
 
 </br>
 
