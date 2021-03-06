@@ -1,0 +1,9 @@
+.jumbotron{
+    font-family: 'DM Sans', sans-serif;
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    background: url(banner.jpg) no-repeat center;
+    background-size: cover;
+    color: white;
+}

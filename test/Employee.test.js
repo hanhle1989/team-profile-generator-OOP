@@ -1,4 +1,4 @@
-const Employee = require("../lib/Employee");
+const Employee = require("../lib/employee");
 
 test("Should be able to create new Employee", () => {
   const employee = new Employee();
@@ -48,7 +48,7 @@ test("Should be able to get email via getEmail()", () => {
   expect(employee.getEmail()).toBe(testEmail);
 });
 
-test("\"Employee\" should return via getRole()", () => {
+test("\"Employee\" should be returned via getRole()", () => {
   const testEmployee = "Employee";
   const employee = new Employee("Hanh", 1, "test@test.com");
   
